@@ -1,0 +1,166 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DrilledHoleDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Table_DrilledHole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HoleName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Latitude" Type="varchar" MaxLength="50" />
+          <Property Name="Longitude" Type="varchar" MaxLength="50" />
+          <Property Name="Dip" Type="float" Nullable="false" />
+          <Property Name="Azimuth" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_HoleDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="HoleName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Depth" Type="float" Nullable="false" />
+          <Property Name="Dip" Type="float" Nullable="false" />
+          <Property Name="Azimuth" Type="float" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DrilledHoleDb.dbo.View_HoleDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_HoleDetail">
+          <Key>
+            <PropertyRef Name="HoleName" />
+            <PropertyRef Name="Depth" />
+            <PropertyRef Name="Dip" />
+            <PropertyRef Name="Azimuth" />
+            <PropertyRef Name="FrontColor" />
+          </Key>
+          <Property Name="HoleName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Depth" Type="float" Nullable="false" />
+          <Property Name="Dip" Type="float" Nullable="false" />
+          <Property Name="Azimuth" Type="float" Nullable="false" />
+          <Property Name="FrontColor" Type="varchar" MaxLength="1" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="DrilledHoleDbModelStoreContainer">
+          <EntitySet Name="Table_DrilledHole" EntityType="Self.Table_DrilledHole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Table_HoleDetail" EntityType="Self.Table_HoleDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_HoleDetail" EntityType="Self.View_HoleDetail" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_HoleDetail].[HoleName] AS [HoleName], 
+    [View_HoleDetail].[Depth] AS [Depth], 
+    [View_HoleDetail].[Dip] AS [Dip], 
+    [View_HoleDetail].[Azimuth] AS [Azimuth], 
+    [View_HoleDetail].[FrontColor] AS [FrontColor]
+    FROM [dbo].[View_HoleDetail] AS [View_HoleDetail]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DrilledHoleDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DrilledHoleDbEntities" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="Procedure_CheckDatabase" />
+          <EntitySet Name="Table_DrilledHole" EntityType="DrilledHoleDbModel.Table_DrilledHole" />
+          <EntitySet Name="Table_HoleDetail" EntityType="DrilledHoleDbModel.Table_HoleDetail" />
+          <EntitySet Name="View_HoleDetail" EntityType="DrilledHoleDbModel.View_HoleDetail" />
+        </EntityContainer>
+        <EntityType Name="Table_DrilledHole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Latitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Longitude" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Dip" Type="Double" Nullable="false" />
+          <Property Name="Azimuth" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Table_HoleDetail">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="HoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Depth" Type="Double" Nullable="false" />
+          <Property Name="Dip" Type="Double" Nullable="false" />
+          <Property Name="Azimuth" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="View_HoleDetail">
+          <Key>
+            <PropertyRef Name="HoleName" />
+            <PropertyRef Name="Depth" />
+            <PropertyRef Name="Dip" />
+            <PropertyRef Name="Azimuth" />
+            <PropertyRef Name="FrontColor" />
+          </Key>
+          <Property Name="HoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Depth" Type="Double" Nullable="false" />
+          <Property Name="Dip" Type="Double" Nullable="false" />
+          <Property Name="Azimuth" Type="Double" Nullable="false" />
+          <Property Name="FrontColor" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DrilledHoleDbModelStoreContainer" CdmEntityContainer="DrilledHoleDbEntities">
+        <EntitySetMapping Name="Table_DrilledHole">
+            <EntityTypeMapping TypeName="DrilledHoleDbModel.Table_DrilledHole">
+              <MappingFragment StoreEntitySet="Table_DrilledHole">
+                <ScalarProperty Name="Azimuth" ColumnName="Azimuth" />
+                <ScalarProperty Name="Dip" ColumnName="Dip" />
+                <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+                <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+                <ScalarProperty Name="HoleName" ColumnName="HoleName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Table_HoleDetail">
+            <EntityTypeMapping TypeName="DrilledHoleDbModel.Table_HoleDetail">
+              <MappingFragment StoreEntitySet="Table_HoleDetail">
+                <ScalarProperty Name="Azimuth" ColumnName="Azimuth" />
+                <ScalarProperty Name="Dip" ColumnName="Dip" />
+                <ScalarProperty Name="Depth" ColumnName="Depth" />
+                <ScalarProperty Name="HoleName" ColumnName="HoleName" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_HoleDetail">
+            <EntityTypeMapping TypeName="DrilledHoleDbModel.View_HoleDetail">
+              <MappingFragment StoreEntitySet="View_HoleDetail">
+                <ScalarProperty Name="FrontColor" ColumnName="FrontColor" />
+                <ScalarProperty Name="Azimuth" ColumnName="Azimuth" />
+                <ScalarProperty Name="Dip" ColumnName="Dip" />
+                <ScalarProperty Name="Depth" ColumnName="Depth" />
+                <ScalarProperty Name="HoleName" ColumnName="HoleName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

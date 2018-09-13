@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <setParameter name="IIS Web Application Name" value="Survey" />
+  <setParameter name="SurveyUserProfileConnection-Web.config Connection String" value="Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=SurveyUserProfile;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\SurveyUserProfile.mdf" />
+  <setParameter name="DrilledHoleDbConnection-Web.config Connection String" value="Data Source=(LocalDb)\MSSQLLocalDB;Initial Catalog=DrilledHoleDb;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|\DrilledHoleDb.mdf" />
+  <setParameter name="DrilledHoleDbEntities-Web.config Connection String" value="metadata=res://*/DrilledHoleSurveyModel.csdl|res://*/DrilledHoleSurveyModel.ssdl|res://*/DrilledHoleSurveyModel.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=(LocalDb)\MSSQLLocalDB;attachdbfilename=|DataDirectory|\DrilledHoleDb.mdf;initial catalog=DrilledHoleDb;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework&quot;" />
+</parameters>
