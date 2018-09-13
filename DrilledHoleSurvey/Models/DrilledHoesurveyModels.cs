@@ -5,24 +5,16 @@ using System.Data.Entity;
 
 namespace DrilledHoleSurvey.Models
 {
-    #region userprofile
-    public class UserProfileContext : DbContext
+    #region Home
+    public class HomeModel
     {
-        public UserProfileContext()
-            : base("SurveyUserProfileConnection")
+        public string Latitude { get; set; }
+        public string Longitude { get; set; }
+        public List<Table_DrilledHole> DrilledHoleList { get; set; }
+        public HomeModel()
         {
+            DrilledHoleList = new List<Table_DrilledHole>();
         }
-
-        public DbSet<UserProfile> UserProfiles_DbSet { get; set; }
-    }
-
-    [Table("UserProfile")]
-    public class UserProfile
-    {
-        [Key]
-        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
-        public int UserId { get; set; }
-        public string UserName { get; set; }
     }
     #endregion
 
@@ -39,10 +31,10 @@ namespace DrilledHoleSurvey.Models
         public string Longitude { get; set; }
 
         [Display(Name = "Dip:")]
-        public float Dip { get; set; }
+        public double Dip { get; set; }
 
         [Display(Name = "Azimuth:")]
-        public float Azimuth { get; set; }
+        public double Azimuth { get; set; }
 
     }
 
@@ -56,8 +48,8 @@ namespace DrilledHoleSurvey.Models
     }
     #endregion
 
-    #region DrilledHole
-    public class HoleDetailModel
+    #region HoleDepthInfo
+    public class HoleDepthInfoModel
     {
         [Display(Name = "Hole Name:")]
         public string HoleName { get; set; }
@@ -73,12 +65,12 @@ namespace DrilledHoleSurvey.Models
 
     }
 
-    public class HoleDetailListModel
+    public class HoleDepthInfoListModel
     {
-        public List<Table_HoleDetail> HoleDetailList { get; set; }
-        public HoleDetailListModel()
+        public List<Table_HoleDepthInfo> HoleDepthInfoList { get; set; }
+        public HoleDepthInfoListModel()
         {
-            HoleDetailList = new List<Table_HoleDetail>();
+            HoleDepthInfoList = new List<Table_HoleDepthInfo>();
         }
     }
     #endregion

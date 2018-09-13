@@ -6,8 +6,8 @@
     <edmx:Diagrams>
       <Diagram DiagramId="a69774594c764dd8942cb776e3290e4f" Name="Diagram1" ZoomLevel="94">
         <EntityTypeShape EntityType="DrilledHoleDbModel.Table_DrilledHole" Width="1.5" PointX="0.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DrilledHoleDbModel.Table_HoleDetail" Width="1.5" PointX="2.75" PointY="0.75" />
-        <EntityTypeShape EntityType="DrilledHoleDbModel.View_HoleDetail" Width="1.5" PointX="2.75" PointY="3.75" />
+        <EntityTypeShape EntityType="DrilledHoleDbModel.Table_HoleDepthInfo" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="DrilledHoleDbModel.View_HoleDepthInfo" Width="1.5" PointX="0.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

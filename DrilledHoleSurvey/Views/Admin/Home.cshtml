@@ -1,0 +1,65 @@
+﻿@model DrilledHoleSurvey.Models.HomeModel
+@{
+    ViewBag.Title = "Home";
+}
+@RenderPage("_AdminHeader.cshtml")
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyC8uzNtMhRlX4CEVUV97P58RG4vh2SO7-c" type="text/javascript"></script>
+
+<style>
+    #map_canvas img {
+        max-width: none
+    }
+</style>
+
+<div id="map_canvas" style="height: 550px; width:850px; float:left; "></div>
+
+<!-- Enclose the Javascript in a "section" so that it is rendered in the correct order after scripts have been loaded etc -->
+@section scripts {
+    <script type="text/javascript">
+
+    $(document).ready(function () {
+        Initialize();
+    });
+    var gMap;
+    var gMarkers = [];
+    function Initialize() {
+        google.maps.visualRefresh = true;
+        var myCenter = new google.maps.LatLng('@Model.Latitude', '@Model.Longitude');
+        var mapOptions = {
+                zoom: 15,
+                center: myCenter,
+                mapTypeId: google.maps.MapTypeId.G_NORMAL_MAP
+            };
+
+            gMap = new google.maps.Map(document.getElementById("map_canvas"), mapOptions);
+
+            @foreach(var hole in Model.DrilledHoleList)
+        {
+    <text>
+            var imageUrl = '../Images/green-dot.png';
+            var image = {
+                url: imageUrl,
+                size: new google.maps.Size(32, 32),
+                origin: new google.maps.Point(0, 0),
+                anchor: new google.maps.Point(0, 32)
+            };
+            var shape = {
+                coord: [1, 1, 1, 32, 32, 32, 32, 1],
+                type: 'poly'
+            };
+            var position = new google.maps.LatLng('@hole.Latitude', '@hole.Longitude');
+            var marker = new google.maps.Marker({
+                position: position,
+                icon: image,
+                map: gMap,
+                shape: shape,
+                title: '',
+                content: ''
+            });
+
+            gMarkers.push(marker);
+    </text>
+        }
+    }
+    </script>
+}

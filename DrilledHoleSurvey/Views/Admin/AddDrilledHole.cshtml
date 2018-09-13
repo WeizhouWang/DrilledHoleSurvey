@@ -1,0 +1,39 @@
+﻿@model DrilledHoleSurvey.Models.DrilledHoleModel
+@{
+    ViewBag.Title = "Add Hole";
+}
+<section class="container" style="margin-top:20px">
+    <hgroup class="title">
+        <h2>@ViewBag.Title</h2>
+    </hgroup>
+
+    @using (Html.BeginForm())
+    {
+        @Html.ValidationSummary()
+    <table class="table">
+        <tr>
+            <td style="width: 200px">@Html.LabelFor(m => m.HoleName)</td>
+            <td>@Html.TextBoxFor(m => m.HoleName)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Latitude)</td>
+            <td>@Html.TextBoxFor(m => m.Latitude)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Longitude)</td>
+            <td>@Html.TextBoxFor(m => m.Longitude)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Dip)</td>
+            <td>@Html.TextBoxFor(m => m.Dip)</td>
+        </tr>
+        <tr>
+            <td>@Html.LabelFor(m => m.Azimuth)</td>
+            <td>@Html.TextBoxFor(m => m.Azimuth)</td>
+        </tr>
+    </table>
+        <button type="submit" class="btn btn-primary" value="Add">
+            <span>Add Hole</span>
+        </button>
+    }
+</section>

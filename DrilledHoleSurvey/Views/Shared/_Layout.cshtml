@@ -2,19 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="utf-8" />
-    <title>@ViewBag.Title - CMS</title>
+    <title>@ViewBag.Title - Survey</title>
     <link href="~/logo.ico" rel="shortcut icon" type="image/x-icon" />
     <meta name="viewport" content="width=device-width" />
     @Styles.Render("~/Content/css")
+    
     @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/bootstrap")
+
 </head>
 <body>
     <header>
         <div class="content-wrapper">
-            <div class="float-left-with-padding">
+            <div style="float:left">
                 <p class="site-title">Drilled Hole Survey</p>
             </div>
-            <div class="float-right">
+            <div style="float:right">
                 <section id="login">
                     @if (Request.IsAuthenticated)
                     {
@@ -44,10 +50,6 @@
         </div>
     </footer>
 
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/jqueryui")
-    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>

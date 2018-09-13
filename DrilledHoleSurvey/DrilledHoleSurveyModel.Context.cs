@@ -28,8 +28,8 @@ namespace DrilledHoleSurvey
         }
     
         public virtual DbSet<Table_DrilledHole> Table_DrilledHole { get; set; }
-        public virtual DbSet<Table_HoleDetail> Table_HoleDetail { get; set; }
-        public virtual DbSet<View_HoleDetail> View_HoleDetail { get; set; }
+        public virtual DbSet<Table_HoleDepthInfo> Table_HoleDepthInfo { get; set; }
+        public virtual DbSet<View_HoleDepthInfo> View_HoleDepthInfo { get; set; }
     
         public virtual int Procedure_CheckDatabase()
         {

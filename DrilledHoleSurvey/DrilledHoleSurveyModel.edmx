@@ -16,7 +16,7 @@
           <Property Name="Dip" Type="float" Nullable="false" />
           <Property Name="Azimuth" Type="float" Nullable="false" />
         </EntityType>
-        <EntityType Name="Table_HoleDetail">
+        <EntityType Name="Table_HoleDepthInfo">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -27,8 +27,8 @@
           <Property Name="Azimuth" Type="float" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'DrilledHoleDb.dbo.View_HoleDetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
-        <EntityType Name="View_HoleDetail">
+warning 6002: The table/view 'DrilledHoleDb.dbo.View_HoleDepthInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_HoleDepthInfo">
           <Key>
             <PropertyRef Name="HoleName" />
             <PropertyRef Name="Depth" />
@@ -44,15 +44,15 @@ warning 6002: The table/view 'DrilledHoleDb.dbo.View_HoleDetail' does not have a
         </EntityType>
         <EntityContainer Name="DrilledHoleDbModelStoreContainer">
           <EntitySet Name="Table_DrilledHole" EntityType="Self.Table_DrilledHole" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="Table_HoleDetail" EntityType="Self.Table_HoleDetail" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="View_HoleDetail" EntityType="Self.View_HoleDetail" store:Type="Views" store:Schema="dbo">
+          <EntitySet Name="Table_HoleDepthInfo" EntityType="Self.Table_HoleDepthInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_HoleDepthInfo" EntityType="Self.View_HoleDepthInfo" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
-    [View_HoleDetail].[HoleName] AS [HoleName], 
-    [View_HoleDetail].[Depth] AS [Depth], 
-    [View_HoleDetail].[Dip] AS [Dip], 
-    [View_HoleDetail].[Azimuth] AS [Azimuth], 
-    [View_HoleDetail].[FrontColor] AS [FrontColor]
-    FROM [dbo].[View_HoleDetail] AS [View_HoleDetail]</DefiningQuery>
+    [View_HoleDepthInfo].[HoleName] AS [HoleName], 
+    [View_HoleDepthInfo].[Depth] AS [Depth], 
+    [View_HoleDepthInfo].[Dip] AS [Dip], 
+    [View_HoleDepthInfo].[Azimuth] AS [Azimuth], 
+    [View_HoleDepthInfo].[FrontColor] AS [FrontColor]
+    FROM [dbo].[View_HoleDepthInfo] AS [View_HoleDepthInfo]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -62,9 +62,9 @@ warning 6002: The table/view 'DrilledHoleDb.dbo.View_HoleDetail' does not have a
         <EntityContainer Name="DrilledHoleDbEntities" annotation:LazyLoadingEnabled="true">
           <FunctionImport Name="Procedure_CheckDatabase" />
           <EntitySet Name="Table_DrilledHole" EntityType="DrilledHoleDbModel.Table_DrilledHole" />
-          <EntitySet Name="Table_HoleDetail" EntityType="DrilledHoleDbModel.Table_HoleDetail" />
-          <EntitySet Name="View_HoleDetail" EntityType="DrilledHoleDbModel.View_HoleDetail" />
-        </EntityContainer>
+          <EntitySet Name="Table_HoleDepthInfo" EntityType="DrilledHoleDbModel.Table_HoleDepthInfo" />
+          <EntitySet Name="View_HoleDepthInfo" EntityType="DrilledHoleDbModel.View_HoleDepthInfo" />
+          </EntityContainer>
         <EntityType Name="Table_DrilledHole">
           <Key>
             <PropertyRef Name="Id" />
@@ -76,7 +76,7 @@ warning 6002: The table/view 'DrilledHoleDb.dbo.View_HoleDetail' does not have a
           <Property Name="Dip" Type="Double" Nullable="false" />
           <Property Name="Azimuth" Type="Double" Nullable="false" />
         </EntityType>
-        <EntityType Name="Table_HoleDetail">
+        <EntityType Name="Table_HoleDepthInfo">
           <Key>
             <PropertyRef Name="Id" />
           </Key>
@@ -86,7 +86,7 @@ warning 6002: The table/view 'DrilledHoleDb.dbo.View_HoleDetail' does not have a
           <Property Name="Dip" Type="Double" Nullable="false" />
           <Property Name="Azimuth" Type="Double" Nullable="false" />
         </EntityType>
-        <EntityType Name="View_HoleDetail">
+        <EntityType Name="View_HoleDepthInfo">
           <Key>
             <PropertyRef Name="HoleName" />
             <PropertyRef Name="Depth" />
@@ -100,13 +100,13 @@ warning 6002: The table/view 'DrilledHoleDb.dbo.View_HoleDetail' does not have a
           <Property Name="Azimuth" Type="Double" Nullable="false" />
           <Property Name="FrontColor" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
         </EntityType>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="DrilledHoleDbModelStoreContainer" CdmEntityContainer="DrilledHoleDbEntities">
-        <EntitySetMapping Name="Table_DrilledHole">
+          <EntitySetMapping Name="Table_DrilledHole">
             <EntityTypeMapping TypeName="DrilledHoleDbModel.Table_DrilledHole">
               <MappingFragment StoreEntitySet="Table_DrilledHole">
                 <ScalarProperty Name="Azimuth" ColumnName="Azimuth" />
@@ -118,9 +118,9 @@ warning 6002: The table/view 'DrilledHoleDb.dbo.View_HoleDetail' does not have a
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Table_HoleDetail">
-            <EntityTypeMapping TypeName="DrilledHoleDbModel.Table_HoleDetail">
-              <MappingFragment StoreEntitySet="Table_HoleDetail">
+          <EntitySetMapping Name="Table_HoleDepthInfo">
+            <EntityTypeMapping TypeName="DrilledHoleDbModel.Table_HoleDepthInfo">
+              <MappingFragment StoreEntitySet="Table_HoleDepthInfo">
                 <ScalarProperty Name="Azimuth" ColumnName="Azimuth" />
                 <ScalarProperty Name="Dip" ColumnName="Dip" />
                 <ScalarProperty Name="Depth" ColumnName="Depth" />
@@ -129,9 +129,9 @@ warning 6002: The table/view 'DrilledHoleDb.dbo.View_HoleDetail' does not have a
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="View_HoleDetail">
-            <EntityTypeMapping TypeName="DrilledHoleDbModel.View_HoleDetail">
-              <MappingFragment StoreEntitySet="View_HoleDetail">
+          <EntitySetMapping Name="View_HoleDepthInfo">
+            <EntityTypeMapping TypeName="DrilledHoleDbModel.View_HoleDepthInfo">
+              <MappingFragment StoreEntitySet="View_HoleDepthInfo">
                 <ScalarProperty Name="FrontColor" ColumnName="FrontColor" />
                 <ScalarProperty Name="Azimuth" ColumnName="Azimuth" />
                 <ScalarProperty Name="Dip" ColumnName="Dip" />

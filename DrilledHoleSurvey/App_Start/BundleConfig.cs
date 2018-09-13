@@ -29,6 +29,7 @@ namespace DrilledHoleSurvey
             bundles.Add(new StyleBundle("~/Content/css").Include(
                         "~/Content/site.css",
                         "~/Content/bootstrap.min.css",
+                        "~/Content/bootstrap/*.less",
                         "~/Content/font-awesome.css"));
                        
         }
