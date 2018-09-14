@@ -121,5 +121,104 @@ namespace DrilledHoleSurvey.Controllers
 
         #endregion
 
+        #region HoleDepthInfo
+        [HttpGet]
+        public ActionResult HoleDepthInfoList(string holeName)
+        {
+            if (Request.IsAuthenticated)
+            {
+                var drilledHoleDb = new DrilledHoleDbEntities();
+                var drilledHole = drilledHoleDb.Table_DrilledHole.FirstOrDefault(a => a.HoleName == holeName);
+                var holeDepthInfoList = drilledHoleDb.View_HoleDepthInfo.Where(a => a.HoleName == holeName).OrderBy(a=>a.Depth).ToList();
+                DrilledHoleSurveyClass.CheckAzimuthValue(drilledHole.Azimuth, holeDepthInfoList);
+                DrilledHoleSurveyClass.CheckDipValue(drilledHole.Dip, holeDepthInfoList);
+                var model = new HoleDepthInfoListModel()
+                {
+                    HoleName = holeName,
+                    HoleDepthInfoList = holeDepthInfoList
+                };
+                return View(model);
+            }
+            return RedirectToAction("Login", "Account");
+        }
+        [HttpGet]
+        public ActionResult EditHoleDepthInfo(string holeName, int depth)
+        {
+            if (Request.IsAuthenticated)
+            {
+                var drilledHoleDb = new DrilledHoleDbEntities();
+                var depthInfo = drilledHoleDb.Table_HoleDepthInfo.FirstOrDefault(a => a.HoleName == holeName && a.Depth == depth);
+                var model = new HoleDepthInfoModel()
+                {
+                    HoleName = depthInfo.HoleName,
+                    Depth = depthInfo.Depth,
+                    Dip = depthInfo.Dip,
+                    Azimuth = depthInfo.Azimuth
+                };
+                return View(model);
+            }
+            return RedirectToAction("Login", "Account");
+        }
+
+        [HttpPost]
+        public ActionResult EditHoleDepthInfo(HoleDepthInfoModel model)
+        {
+            if (Request.IsAuthenticated)
+            {
+                DrilledHoleDbEntities drilledHoleDb = new DrilledHoleDbEntities();
+                var depthInfo = drilledHoleDb.Table_HoleDepthInfo.FirstOrDefault(a => a.HoleName == model.HoleName && a.Depth == model.Depth);
+                depthInfo.Dip = model.Dip;
+                depthInfo.Azimuth = model.Azimuth;
+                drilledHoleDb.SaveChanges();
+                return RedirectToAction("HoleDepthInfoList", new { holeName = model.HoleName });
+
+            }
+            return RedirectToAction("Login", "Account");
+        }
+
+        [HttpGet]
+        public ActionResult DeleteHoleDepthInfo(string holeName, double depth)
+        {
+            if (Request.IsAuthenticated)
+            {
+                DrilledHoleDbEntities drilledHoleDb = new DrilledHoleDbEntities();
+                var depthInfo = drilledHoleDb.Table_HoleDepthInfo.FirstOrDefault(a => a.HoleName == holeName && a.Depth == depth);
+                drilledHoleDb.Table_HoleDepthInfo.Remove(depthInfo);
+                drilledHoleDb.SaveChanges();
+                return RedirectToAction("HoleDepthInfoList", new { holeName = holeName });
+            }
+            return RedirectToAction("Login", "Account");
+        }
+
+        [HttpGet]
+        public ActionResult AddHoleDepthInfo(string holeName)
+        {
+            if (Request.IsAuthenticated)
+            {
+                HoleDepthInfoModel model = new HoleDepthInfoModel();
+                model.HoleName = holeName;
+                return View(model);
+            }
+            return RedirectToAction("Login", "Account");
+        }
+
+        [HttpPost]
+        public ActionResult AddHoleDepthInfo(HoleDepthInfoModel model)
+        {
+            if (Request.IsAuthenticated)
+            {
+                DrilledHoleDbEntities drilledHoleDb = new DrilledHoleDbEntities();
+                var depthInfo = new Table_HoleDepthInfo();
+                depthInfo.HoleName = model.HoleName;
+                depthInfo.Depth = model.Depth;
+                depthInfo.Dip = model.Dip;
+                depthInfo.Azimuth = model.Azimuth;
+                drilledHoleDb.Table_HoleDepthInfo.Add(depthInfo);
+                drilledHoleDb.SaveChanges();
+                return RedirectToAction("HoleDepthInfoList", new { holeName = model.HoleName });
+            }
+            return RedirectToAction("Login", "Account");
+        }
+        #endregion
     }
 }

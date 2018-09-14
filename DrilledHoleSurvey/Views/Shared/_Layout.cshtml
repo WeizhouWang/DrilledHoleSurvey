@@ -1,55 +1,40 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - Survey</title>
-    <link href="~/logo.ico" rel="shortcut icon" type="image/x-icon" />
-    <meta name="viewport" content="width=device-width" />
     @Styles.Render("~/Content/css")
-    
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/jqueryval")
-    @Scripts.Render("~/bundles/jqueryui")
-    @Scripts.Render("~/bundles/bootstrap")
 
 </head>
 <body>
-    <header>
-        <div class="content-wrapper">
-            <div style="float:left">
-                <p class="site-title">Drilled Hole Survey</p>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Survey", "Login", "Account", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div style="float:right">
-                <section id="login">
-                    @if (Request.IsAuthenticated)
-                    {
-                        <text>
-                            Welcome @User.Identity.Name
-                            <button class="btn btn-danger" type="button" style="height:30px; line-height:10px" value="Log Off" onclick="@("location.href='" + @Url.Action("LogOff", "Account") +"'")">
-                                <span>Log Off</span>
-                            </button>
-                        </text>
-                    }
-                </section>
-
+            <div class="navbar-collapse collapse">
+                
+                @Html.Partial("_LoginPartial")
             </div>
         </div>
-    </header>
-    <div id="body">
-        @RenderSection("featured", required: false)
-        <section class="content-wrapper main-content clear-fix">
-            @RenderBody()
-        </section>
     </div>
-    <footer>
-        <div class="content-wrapper">
-            <div class="float-left">
-                <p>&copy; @DateTime.Now.Year - Version: @typeof(DrilledHoleSurvey.Controllers.AccountController).Assembly.GetName().Version.ToString()</p>
-            </div>
-        </div>
-    </footer>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year</p>
+        </footer>
+    </div>
 
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
 </body>
 </html>

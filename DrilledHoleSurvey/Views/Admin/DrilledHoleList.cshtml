@@ -14,7 +14,7 @@
             <th>Longitude</th>
             <th>Dip</th>
             <th>Azimuth</th>
-            <th colspan="2"></th>
+            <th colspan="3"></th>
         </tr>
 
         @foreach (var item in Model.DrilledHoleList)
@@ -39,6 +39,7 @@
                 @Html.ActionLink("Edit", "EditDrilledHole", new { holeName = item.HoleName }, null)
                 @Html.ActionLink("Delete", "DeleteDrilledHole", new { holeName = item.HoleName },
                     new { onclick = "return confirm ('Are you sure you will delete "  + item.HoleName + "?');" })
+                @Html.ActionLink("Details", "HoleDepthInfoList", new { holeName = item.HoleName }, null)
             </td>
         </tr>
         }

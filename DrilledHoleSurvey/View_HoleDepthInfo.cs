@@ -18,6 +18,7 @@ namespace DrilledHoleSurvey
         public double Depth { get; set; }
         public double Dip { get; set; }
         public double Azimuth { get; set; }
-        public string FrontColor { get; set; }
+        public string DipStatus { get; set; }
+        public string AzimuthStatus { get; set; }
     }
 }

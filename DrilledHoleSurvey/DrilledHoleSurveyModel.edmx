@@ -34,13 +34,15 @@ warning 6002: The table/view 'DrilledHoleDb.dbo.View_HoleDepthInfo' does not hav
             <PropertyRef Name="Depth" />
             <PropertyRef Name="Dip" />
             <PropertyRef Name="Azimuth" />
-            <PropertyRef Name="FrontColor" />
+            <PropertyRef Name="DipStatus" />
+            <PropertyRef Name="AzimuthStatus" />
           </Key>
           <Property Name="HoleName" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Depth" Type="float" Nullable="false" />
           <Property Name="Dip" Type="float" Nullable="false" />
           <Property Name="Azimuth" Type="float" Nullable="false" />
-          <Property Name="FrontColor" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="DipStatus" Type="varchar" MaxLength="1" Nullable="false" />
+          <Property Name="AzimuthStatus" Type="varchar" MaxLength="1" Nullable="false" />
         </EntityType>
         <EntityContainer Name="DrilledHoleDbModelStoreContainer">
           <EntitySet Name="Table_DrilledHole" EntityType="Self.Table_DrilledHole" Schema="dbo" store:Type="Tables" />
@@ -51,7 +53,8 @@ warning 6002: The table/view 'DrilledHoleDb.dbo.View_HoleDepthInfo' does not hav
     [View_HoleDepthInfo].[Depth] AS [Depth], 
     [View_HoleDepthInfo].[Dip] AS [Dip], 
     [View_HoleDepthInfo].[Azimuth] AS [Azimuth], 
-    [View_HoleDepthInfo].[FrontColor] AS [FrontColor]
+    [View_HoleDepthInfo].[DipStatus] AS [DipStatus], 
+    [View_HoleDepthInfo].[AzimuthStatus] AS [AzimuthStatus]
     FROM [dbo].[View_HoleDepthInfo] AS [View_HoleDepthInfo]</DefiningQuery>
           </EntitySet>
         </EntityContainer>
@@ -92,13 +95,15 @@ warning 6002: The table/view 'DrilledHoleDb.dbo.View_HoleDepthInfo' does not hav
             <PropertyRef Name="Depth" />
             <PropertyRef Name="Dip" />
             <PropertyRef Name="Azimuth" />
-            <PropertyRef Name="FrontColor" />
+            <PropertyRef Name="DipStatus" />
+            <PropertyRef Name="AzimuthStatus" />
           </Key>
           <Property Name="HoleName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Depth" Type="Double" Nullable="false" />
           <Property Name="Dip" Type="Double" Nullable="false" />
           <Property Name="Azimuth" Type="Double" Nullable="false" />
-          <Property Name="FrontColor" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="DipStatus" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="AzimuthStatus" Type="String" Nullable="false" MaxLength="1" FixedLength="false" Unicode="false" />
         </EntityType>
         </Schema>
     </edmx:ConceptualModels>
@@ -132,7 +137,8 @@ warning 6002: The table/view 'DrilledHoleDb.dbo.View_HoleDepthInfo' does not hav
           <EntitySetMapping Name="View_HoleDepthInfo">
             <EntityTypeMapping TypeName="DrilledHoleDbModel.View_HoleDepthInfo">
               <MappingFragment StoreEntitySet="View_HoleDepthInfo">
-                <ScalarProperty Name="FrontColor" ColumnName="FrontColor" />
+                <ScalarProperty Name="AzimuthStatus" ColumnName="AzimuthStatus" />
+                <ScalarProperty Name="DipStatus" ColumnName="DipStatus" />
                 <ScalarProperty Name="Azimuth" ColumnName="Azimuth" />
                 <ScalarProperty Name="Dip" ColumnName="Dip" />
                 <ScalarProperty Name="Depth" ColumnName="Depth" />

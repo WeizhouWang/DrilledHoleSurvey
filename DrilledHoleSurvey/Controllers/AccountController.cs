@@ -55,7 +55,7 @@ namespace DrilledHoleSurvey.Controllers
             }
         }
 
-        [HttpGet]
+        [HttpPost]
         public ActionResult LogOff()
         {
             try

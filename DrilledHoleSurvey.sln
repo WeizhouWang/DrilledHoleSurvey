@@ -1,7 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2016
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrilledHoleSurvey", "DrilledHoleSurvey\DrilledHoleSurvey.csproj", "{19A61F49-9048-480B-A420-C64C203E7DDA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DrilledHoleSurvey_UnitTest", "DrilledHoleSurvey_UnitTest\DrilledHoleSurvey_UnitTest.csproj", "{73D63508-75A9-402C-B6B9-784A87D8AC37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -13,12 +17,15 @@ Global
 		{19A61F49-9048-480B-A420-C64C203E7DDA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{19A61F49-9048-480B-A420-C64C203E7DDA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{19A61F49-9048-480B-A420-C64C203E7DDA}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2EF2B180-5C31-457C-9020-A6A70A0FE10B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2EF2B180-5C31-457C-9020-A6A70A0FE10B}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2EF2B180-5C31-457C-9020-A6A70A0FE10B}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2EF2B180-5C31-457C-9020-A6A70A0FE10B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73D63508-75A9-402C-B6B9-784A87D8AC37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73D63508-75A9-402C-B6B9-784A87D8AC37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73D63508-75A9-402C-B6B9-784A87D8AC37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73D63508-75A9-402C-B6B9-784A87D8AC37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {49CCAE65-F1A7-4A1E-B159-A9A7C52CAC7C}
 	EndGlobalSection
 EndGlobal
